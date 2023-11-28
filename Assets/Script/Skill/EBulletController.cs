@@ -5,14 +5,12 @@ using UnityEngine;
 public class EBulletController : MonoBehaviour
 {
     Rigidbody2D rb;
-    SpriteRenderer sr;
     public float eBulletSpeed = 6f;
     public int damage = 20;
-    public GameObject bullet2;
+    public float desTime = 0.2f;
 
     void Awake()
     {
-        sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         if (transform.localRotation.y > 0)
             rb.AddForce(new Vector2(-1, 0) * eBulletSpeed, ForceMode2D.Impulse);
@@ -33,11 +31,9 @@ public class EBulletController : MonoBehaviour
         {
             if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                //collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
-                sr.enabled = false;              
+                collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+                Destroy(gameObject, desTime);
             }
-            Vector2 target = new Vector2(collision.transform.position.x - 0.25f, transform.position.y);
-            Instantiate(bullet2, target, Quaternion.identity);
         }
     }
 }

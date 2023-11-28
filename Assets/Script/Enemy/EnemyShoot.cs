@@ -42,7 +42,7 @@ public class EnemyShoot : MonoBehaviour
         }
 
         else if(bulletAtk3_2 && animator.GetCurrentAnimatorStateInfo(0).IsName("atk3"))
-        {
+        {//bullet bắn thẳng player
             if (eParent.isFlipped)
                 Instantiate(bullet3, eParent.target.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             else

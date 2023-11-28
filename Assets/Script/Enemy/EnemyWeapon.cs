@@ -39,7 +39,8 @@ public class EnemyWeapon : MonoBehaviour
         Vector3 pos = transform.position;
         pos += transform.right * atkOffset.x;
         pos += transform.up * atkOffset.y;
-
-        Gizmos.DrawWireSphere(pos, atkRange);
+        
+        Gizmos.color = Color.red;//có thể bỏ
+        Gizmos.DrawWireSphere(pos, atkRange);       
     }
 }
